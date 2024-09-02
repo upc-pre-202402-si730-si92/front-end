@@ -4,7 +4,8 @@
     <div class="main-content">
       <the-sidebar />
       <main class="content">
-        <slot />
+<auth-page></auth-page>
+
       </main>
     </div>
     <the-footer />
@@ -12,9 +13,13 @@
 </template>
 
 <script setup>
-import TheHeader from './the-header.vue';
-import TheFooter from './the-footer.vue';
-import TheSidebar from './the-sidebar.vue';
+import TheHeader from './the-header.vue'
+import TheFooter from './the-footer.vue'
+import TheSidebar from './the-sidebar.vue'
+import AuthPage from '@/contexts/security/pages/auth-page.component.vue'
+
+
+
 </script>
 
 <style scoped>

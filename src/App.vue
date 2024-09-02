@@ -1,8 +1,6 @@
 <script setup>
-
-import MainLayout from '@/layouts/main-layout.vue';
+import MainLayout from '@/layouts/main-layout.vue'
 </script>
-
 
 <template>
   <main-layout>
@@ -10,11 +8,4 @@ import MainLayout from '@/layouts/main-layout.vue';
     <p>This is the main content area.</p>
   </main-layout>
 </template>
-
-
-<style scoped>
-
-</style>
-
-
-
+<style scoped></style>
