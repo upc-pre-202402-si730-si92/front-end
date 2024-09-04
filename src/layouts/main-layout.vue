@@ -4,8 +4,7 @@
     <div class="main-content">
       <the-sidebar />
       <main class="content">
-<auth-page></auth-page>
-
+<TutorialManagement />
       </main>
     </div>
     <the-footer />
@@ -16,10 +15,8 @@
 import TheHeader from './the-header.vue'
 import TheFooter from './the-footer.vue'
 import TheSidebar from './the-sidebar.vue'
-import AuthPage from '@/contexts/security/pages/auth-page.component.vue'
 
-
-
+import TutorialManagement from '@/contexts/learning/pages/tutorial-management.page.vue'
 </script>
 
 <style scoped>

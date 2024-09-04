@@ -31,13 +31,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const username = ref('');
-const email = ref('');
-const password = ref('');
-const confirmPassword = ref('');
-const userType = ref('User');
+const username = ref('')
+const email = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+const userType = ref('User')
 </script>
 
 <style scoped>
@@ -61,11 +61,10 @@ label {
   margin-bottom: 5px;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
   border-radius: 4px;
 }
-
-
 </style>

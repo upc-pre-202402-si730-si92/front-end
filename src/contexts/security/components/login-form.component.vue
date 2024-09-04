@@ -23,11 +23,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const username = ref('');
-const password = ref('');
-const userType = ref('User');
+const username = ref('')
+const password = ref('')
+const userType = ref('User')
 </script>
 
 <style scoped>
@@ -52,10 +52,9 @@ label {
   margin-bottom: 5px;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
 }
-
-
 </style>
