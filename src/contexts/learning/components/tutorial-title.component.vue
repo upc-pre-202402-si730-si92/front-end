@@ -1,6 +1,6 @@
 <template>
   <div class="p-field">
-    <label for="title" class="form-label">Tutorial Title</label>
+    <label for="title" class="form-label">{{ $t('learning.title') }} </label>
     <pv-input-text id="title" :value="modelValue" @input="updateValue" class="form-input" />
   </div>
 </template>

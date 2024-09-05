@@ -1,6 +1,6 @@
 <template>
   <div class="p-field">
-    <label for="category" class="form-label">Category</label>
+    <label for="category" class="form-label">{{ $t('learning.category') }} </label>
     <pv-dropdown
       id="category"
       :value="modelValue"

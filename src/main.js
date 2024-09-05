@@ -14,6 +14,8 @@ import Calendar from 'primevue/calendar'
 import Checkbox from 'primevue/checkbox'
 import Rating from 'primevue/rating'
 import Button from 'primevue/button'
+import i18n from '@/translate/i18n.js'
+
 
 const app = createApp(App)
 
@@ -35,4 +37,6 @@ app.component('pv-checkbox', Checkbox)
 app.component('pv-rating', Rating)
 app.component('pv-button', Button)
 
+
+app.use(i18n)
 app.mount('#app')
