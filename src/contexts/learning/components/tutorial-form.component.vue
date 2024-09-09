@@ -47,13 +47,12 @@ import TutorialPublished from './tutorial-published.component.vue'
 import TutorialRating from './tutorial-rating.component.vue'
 import FormActions from './form-actions.component.vue'
 
+const emit = defineEmits(['cancel'])
+
 const form = reactive(new Tutorial())
 
 const onSubmit = () => {
-
-
   console.log('Tutorial Object:', form)
-
   const jsonOutput = JSON.stringify(form, null, 2)
   console.log('JSON:', jsonOutput)
 }
@@ -69,6 +68,8 @@ const onCancel = () => {
   form.published = false
   form.rating = 0
   form.id = 0
+
+  emit('cancel')
 }
 </script>
 
