@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button @click="toggleForm(true)">Login</button>
-      <button @click="toggleForm(false)">Register</button>
+      <pv-button @click="toggleForm(true)" label="Login" />
+      <pv-button @click="toggleForm(false)" label="Register" />
     </div>
     <div v-if="showLogin">
       <login-form />
