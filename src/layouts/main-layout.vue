@@ -4,7 +4,7 @@
     <div class="main-content">
       <the-sidebar />
       <main class="content">
-<AuthManagement />
+        <router-view></router-view>
       </main>
     </div>
     <the-footer />
@@ -15,7 +15,6 @@
 import TheHeader from './the-header.vue'
 import TheFooter from './the-footer.vue'
 import TheSidebar from './the-sidebar.vue'
-import AuthManagement from '@/contexts/security/pages/auth-management.page.vue'
 
 
 </script>
