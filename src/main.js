@@ -15,22 +15,7 @@ import Checkbox from 'primevue/checkbox'
 import Rating from 'primevue/rating'
 import Button from 'primevue/button'
 import i18n from '@/translate/i18n.js'
-import {createWebHistory,  createRouter } from 'vue-router'
-
-import AuthManagement from '@/contexts/security/pages/auth-management.page.vue'
-import TutorialManagement from '@/contexts/learning/pages/tutorial-management.page.vue'
-
-const routes = [
-  { path: '/', redirect: '/security' },
-  { path: '/security', component: AuthManagement },
-  { path: '/tutorial', component: TutorialManagement },
-]
-
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
+import router from '@/router.js'
 
 const app = createApp(App)
 
