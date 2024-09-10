@@ -11,6 +11,7 @@
         :model-value="modelValue"
         @update:model-value="updateValue"
         :label="option.label"
+        aria-label="Difficulty Level"
       />
     </div>
   </div>

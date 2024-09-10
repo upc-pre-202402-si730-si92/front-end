@@ -19,17 +19,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onBeforeMount, ref } from 'vue'
 import TutorialList from '../components/tutorial-list.component.vue';
 import TutorialForm from '../components/tutorial-form.component.vue';
 import { Tutorial } from '../models/tutorial-entity.js';
+import { TutorialApiService } from '@/contexts/learning/services/tutorial-api.service.js'
 
-const tutorials = ref([
-  new Tutorial(1, 'Vue Basics', 'Learn the basics of Vue.js', 'Technology', 'Beginner', 120, 'John Doe', new Date('2023-01-01'), true, 4),
-  new Tutorial(2, 'Advanced Vue Patterns', 'Explore advanced design patterns in Vue.js', 'Technology', 'Advanced', 180, 'Jane Smith', new Date('2023-06-15'), false, 5),
-  new Tutorial(3, 'JavaScript Essentials', 'Master the fundamentals of JavaScript', 'Programming', 'Intermediate', 90, 'Alex Johnson', new Date('2023-08-10'), true, 3),
-  new Tutorial(4, 'React vs Vue', 'Compare React.js and Vue.js frameworks', 'Technology', 'Beginner', 110, 'Lisa Brown', new Date('2023-03-20'), false, 4)
-]);
+const tutorialApiService = new TutorialApiService();
+
+
+
+const tutorials = ref([]);
 
 const selectedTutorial = ref({});
 const isFormVisible = ref(false);
@@ -67,4 +67,15 @@ const cancelForm = () => {
 const deleteTutorial = (id) => {
   tutorials.value = tutorials.value.filter(t => t.id !== id);
 };
+
+const loadTutorials = async () => {
+  const response = await tutorialApiService.getAll()
+  tutorials.value = response.data;
+};
+
+onBeforeMount(async () => {
+  loadTutorials();
+
+})
+
 </script>
