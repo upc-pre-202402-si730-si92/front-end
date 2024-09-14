@@ -5,16 +5,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 import TheHome from '@/contexts/shared/pages/the-home.page.vue'
 
 const routes = [
-  { path: '/', component :TheHome},
+  { path: '/', component: TheHome },
   { path: '/security', component: AuthManagement },
   { path: '/tutorial', component: TutorialManagement },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 })
 
-
-export default router;
+export default router

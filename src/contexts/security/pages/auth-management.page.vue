@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <div>
-      <pv-button @click="toggleForm(true)" label="Login" />
-      <pv-button @click="toggleForm(false)" label="Register" />
+  <div class="auth-container">
+    <div class="auth-buttons">
+      <pv-button @click="toggleForm(true)" label="Login" class="auth-button" />
+      <pv-button @click="toggleForm(false)" label="Register" class="auth-button" />
     </div>
-    <div v-if="showLogin">
-      <login-form />
-    </div>
-    <div v-else>
-      <register-form />
+    <div class="auth-form">
+      <div v-if="showLogin">
+        <login-form />
+      </div>
+      <div v-else>
+        <register-form />
+      </div>
     </div>
   </div>
 </template>
@@ -24,3 +26,32 @@ function toggleForm(isLogin) {
   showLogin.value = isLogin
 }
 </script>
+
+<style scoped>
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background color */
+}
+
+.auth-buttons {
+  margin-bottom: 20px;
+}
+
+.auth-button {
+  margin: 0 10px;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+</style>

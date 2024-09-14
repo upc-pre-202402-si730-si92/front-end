@@ -1,8 +1,7 @@
-import axios from 'axios'
+import http from '@/contexts/shared/services/http-common.js'
 
 export class TutorialApiService {
-
-  async getAll(){
-   return await axios.get("http://localhost:3000/tutorials")
+  async getAll() {
+    return await http.get('/tutorials')
   }
 }

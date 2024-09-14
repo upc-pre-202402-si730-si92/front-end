@@ -2,7 +2,6 @@
   <div class="p-field">
     <label for="title" class="form-label">{{ $t('learning.title') }} </label>
     <pv-input-text id="title" :value="modelValue" @input="updateValue" class="form-input" />
-    <img src="../../assets/images/learning/tutorial-title.png" alt="cat" />
   </div>
 </template>
 

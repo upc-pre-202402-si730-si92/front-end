@@ -25,7 +25,7 @@
           <option value="Admin">Admin</option>
         </select>
       </div>
- <pv-button label="Register" />
+      <pv-button label="Register" />
     </form>
   </div>
 </template>

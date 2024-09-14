@@ -3,7 +3,8 @@
     <h2>Tutorials List</h2>
     <ul>
       <li v-for="tutorial in tutorials" :key="tutorial.id">
-        <strong>{{ tutorial.title }}</strong> - Category: {{ tutorial.category }} - Difficulty: {{ tutorial.difficulty }}
+        <strong>{{ tutorial.title }}</strong> - Category: {{ tutorial.category }} - Difficulty:
+        {{ tutorial.difficulty }}
         <br />
         Instructor: {{ tutorial.instructor }} | Duration: {{ tutorial.duration }} mins
         <br />
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
@@ -32,22 +33,22 @@ export default defineComponent({
   emits: ['edit', 'delete', 'create'],
   setup(props, { emit }) {
     const editTutorial = (tutorial) => {
-      emit('edit', tutorial);
-    };
+      emit('edit', tutorial)
+    }
 
     const deleteTutorial = (id) => {
-      emit('delete', id);
-    };
+      emit('delete', id)
+    }
 
     const showCreateForm = () => {
-      emit('create');
-    };
+      emit('create')
+    }
 
     return {
       editTutorial,
       deleteTutorial,
       showCreateForm
-    };
+    }
   }
-});
+})
 </script>

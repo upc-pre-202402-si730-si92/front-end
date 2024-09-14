@@ -1,4 +1,4 @@
-import { createI18n } from 'vue-i18n';
+import { createI18n } from 'vue-i18n'
 
 const messages = {
   en: {
@@ -19,12 +19,12 @@ const messages = {
       category: 'カテゴリ'
     }
   }
-};
+}
 
 const i18n = createI18n({
   locale: 'en', // Default locale
   fallbackLocale: 'en', // Fallback locale
   messages // Short syntax for messages
-});
+})
 
-export default i18n;
+export default i18n

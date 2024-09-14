@@ -15,8 +15,6 @@
 import TheHeader from './the-header.vue'
 import TheFooter from './the-footer.vue'
 import TheSidebar from './the-sidebar.vue'
-
-
 </script>
 
 <style scoped>
