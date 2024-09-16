@@ -7,6 +7,6 @@ const http = axios.create({
 })
 
 http.defaults.headers.common['Content-type'] = 'application/json'
-http.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+
 
 export default http

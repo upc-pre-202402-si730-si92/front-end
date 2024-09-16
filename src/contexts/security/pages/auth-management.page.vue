@@ -33,9 +33,9 @@ function toggleForm(isLogin) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full viewport height */
+  height: 100%;
   padding: 20px;
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #f9f9f9;
 }
 
 .auth-buttons {
