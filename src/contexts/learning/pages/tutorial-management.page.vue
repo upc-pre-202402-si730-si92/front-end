@@ -52,7 +52,7 @@ const saveTutorial = (tutorial) => {
       tutorials.value[index] = tutorial
     }
   } else {
-    tutorial.id = tutorials.value.length + 1
+    //tutorial.id = tutorials.value.length + 1
     tutorials.value.push(tutorial)
   }
   isFormVisible.value = false

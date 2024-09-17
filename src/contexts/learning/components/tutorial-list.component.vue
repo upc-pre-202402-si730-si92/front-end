@@ -3,6 +3,7 @@
     <h2>Tutorials List</h2>
     <ul>
       <li v-for="tutorial in tutorials" :key="tutorial.id">
+        <strong>{{ tutorial.id }}</strong>
         <strong>{{ tutorial.title }}</strong> - Category: {{ tutorial.category }} - Difficulty:
         {{ tutorial.difficulty }}
         <br />
@@ -12,7 +13,8 @@
         <br />
         Rating: {{ tutorial.rating }} / 5 | Status: {{ tutorial.status }}
         <br />
-        <pv-button @click="editTutorial(tutorial)" label="Edit" />
+
+        <router-link :to="{name:'updateTutorial', params:{id:tutorial.id}}">Edit</router-link>
         <pv-button @click="deleteTutorial(tutorial.id)" severity="danger" label="Delete" />
       </li>
     </ul>

@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { Tutorial } from '../models/tutorial-entity.js'
 import TutorialTitle from './tutorial-title.component.vue'
 import TutorialDescription from './tutorial-description.component.vue'
@@ -46,16 +46,41 @@ import TutorialPublicationDate from './tutorial-publication-date.component.vue'
 import TutorialPublished from './tutorial-published.component.vue'
 import TutorialRating from './tutorial-rating.component.vue'
 import FormActions from './form-actions.component.vue'
+import { TutorialApiService } from '@/contexts/learning/services/tutorial-api.service.js'
+import router from '@/router.js'
+import { useRoute } from 'vue-router';
+
+const routes = useRoute();
 
 const emit = defineEmits(['cancel'])
 
 const form = reactive(new Tutorial())
+const tutorialApiService = new TutorialApiService();
 
 const onSubmit = () => {
   console.log('Tutorial Object:', form)
   const jsonOutput = JSON.stringify(form, null, 2)
   console.log('JSON:', jsonOutput)
+
+  tutorialApiService.save(form)
+    .then((response) => {
+
+      if(response.status == 201){
+          router.push('/tutorial');
+      }
+
+      emit('save')
+  }).catch((error) => {
+    console.error('Error: Error', error)
+  })
+  //linea 62
 }
+
+onMounted( () => {
+    const id = ref(routes.params.id);
+    tutorialApiService.get(id.value);
+});
+
 
 const onCancel = () => {
   form.title = ''
