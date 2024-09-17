@@ -9,8 +9,8 @@ const routes = [
   { path: '/', component: TheHome },
   { path: '/security', component: AuthManagement },
   { path: '/tutorial', component: TutorialManagement },
-  { path: '/create-tutorial', component: TutorialForm ,name: 'createTutorial' },
-  { path: '/update-tutorial/:id', component: TutorialForm ,name: 'updateTutorial' },
+  { path: '/create-tutorial', component: TutorialForm, name: 'createTutorial' },
+  { path: '/update-tutorial/:id', component: TutorialForm, name: 'updateTutorial' },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ]
 

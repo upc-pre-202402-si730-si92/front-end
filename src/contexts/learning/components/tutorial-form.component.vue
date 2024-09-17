@@ -48,64 +48,68 @@ import TutorialRating from './tutorial-rating.component.vue'
 import FormActions from './form-actions.component.vue'
 import { TutorialApiService } from '@/contexts/learning/services/tutorial-api.service.js'
 import router from '@/router.js'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 
-const routes = useRoute();
+const routes = useRoute()
 
 const emit = defineEmits(['cancel'])
 
 const form = reactive(new Tutorial())
-const tutorialApiService = new TutorialApiService();
+const tutorialApiService = new TutorialApiService()
 
-const id = ref(routes.params.id);
+const id = ref(routes.params.id || '')
+
 const onSubmit = () => {
-
-
-  if (typeof id.value != 'undefined') {
-    tutorialApiService.update(id.value,form)
-    .then((response) => {
-      if(response.status == 200){
-          router.push('/tutorial');
-      }
-      emit('save')
-    }).catch((error) => {
-      console.error('Error: Error', error)
-    })
-    return
-  }
-else
-  {
-
-    tutorialApiService.save(form)
+  // If it's an update operation (i.e., `id` is not empty)
+  if (id.value !== '') {
+    tutorialApiService
+      .update(id.value, form)
       .then((response) => {
-        if (response.status == 201) {
-          router.push('/tutorial');
+        if (response.status == 200) {
+          router.push('/tutorial')
         }
         emit('save')
-      }).catch((error) => {
-      console.error('Error: Error', error)
-    })
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+    return
   }
+
+  // Otherwise, it's a create operation, and we omit the `id` field
+  const { id: omitId, ...newTutorialData } = form // Omitting `id` from the payload
+  tutorialApiService
+    .save(newTutorialData)
+    .then((response) => {
+      if (response.status == 201) {
+        router.push('/tutorial')
+      }
+      emit('save')
+    })
+    .catch((error) => {
+      console.error('Error:', error)
+    })
 }
 
-onMounted( () => {
-    tutorialApiService.get(id.value) .then((response) => {
-      const tutorialData = response.data;
+onMounted(() => {
+  if (id.value) {
+    tutorialApiService.get(id.value).then((response) => {
+      const tutorialData = response.data
 
       // Populate the form with the data from the API
-      form.title = tutorialData.title;
-      form.description = tutorialData.description;
-      form.category = tutorialData.category;
-      form.difficulty = tutorialData.difficulty;
-      form.duration = tutorialData.duration;
-      form.instructor = tutorialData.instructor;
-      form.publicationDate = new Date(tutorialData.publicationDate); // Convert string to Date object if needed
-      form.published = tutorialData.published;
-      form.rating = tutorialData.rating;
-      form.id = tutorialData.id;
+      form.title = tutorialData.title
+      form.description = tutorialData.description
+      form.category = tutorialData.category
+      form.difficulty = tutorialData.difficulty
+      form.duration = tutorialData.duration
+      form.instructor = tutorialData.instructor
+      form.publicationDate = new Date(tutorialData.publicationDate) // Convert string to Date object if needed
+      form.published = tutorialData.published
+      form.rating = tutorialData.rating
+      form.id = tutorialData.id
     })
-});
-
+  }
+})
 
 const onCancel = () => {
   form.title = ''

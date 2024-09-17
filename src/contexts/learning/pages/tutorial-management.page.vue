@@ -45,16 +45,8 @@ const showCreateForm = () => {
   isEdit.value = false
 }
 
-const saveTutorial = (tutorial) => {
-  if (isEdit.value) {
-    const index = tutorials.value.findIndex((t) => t.id === tutorial.id)
-    if (index !== -1) {
-      tutorials.value[index] = tutorial
-    }
-  } else {
-    //tutorial.id = tutorials.value.length + 1
-    tutorials.value.push(tutorial)
-  }
+const saveTutorial = async () => {
+  await loadTutorials()
   isFormVisible.value = false
 }
 
@@ -64,8 +56,8 @@ const cancelForm = () => {
 
 const deleteTutorial = async (id) => {
   await tutorialApiService.delete(id).then(() => {
-    loadTutorials();
-  });
+    loadTutorials()
+  })
 }
 
 const loadTutorials = async () => {
@@ -74,6 +66,6 @@ const loadTutorials = async () => {
 }
 
 onBeforeMount(async () => {
-  loadTutorials()
+  await loadTutorials()
 })
 </script>
