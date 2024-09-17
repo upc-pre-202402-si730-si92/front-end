@@ -10,5 +10,10 @@ export class TutorialApiService {
   async save(body) {
     return await http.post('/tutorials', body)
   }
-
+  async update(id, body) {
+    return await http.put(`/tutorials/${id}`, body)
+  }
+  async delete(id) {
+    return await http.delete(`/tutorials/${id}`)
+  }
 }

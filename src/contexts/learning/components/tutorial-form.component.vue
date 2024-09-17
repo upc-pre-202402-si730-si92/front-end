@@ -57,28 +57,53 @@ const emit = defineEmits(['cancel'])
 const form = reactive(new Tutorial())
 const tutorialApiService = new TutorialApiService();
 
+const id = ref(routes.params.id);
 const onSubmit = () => {
-  console.log('Tutorial Object:', form)
-  const jsonOutput = JSON.stringify(form, null, 2)
-  console.log('JSON:', jsonOutput)
 
-  tutorialApiService.save(form)
+
+  if (typeof id.value != 'undefined') {
+    tutorialApiService.update(id.value,form)
     .then((response) => {
-
-      if(response.status == 201){
+      if(response.status == 200){
           router.push('/tutorial');
       }
-
       emit('save')
-  }).catch((error) => {
-    console.error('Error: Error', error)
-  })
-  //linea 62
+    }).catch((error) => {
+      console.error('Error: Error', error)
+    })
+    return
+  }
+else
+  {
+
+    tutorialApiService.save(form)
+      .then((response) => {
+        if (response.status == 201) {
+          router.push('/tutorial');
+        }
+        emit('save')
+      }).catch((error) => {
+      console.error('Error: Error', error)
+    })
+  }
 }
 
 onMounted( () => {
-    const id = ref(routes.params.id);
-    tutorialApiService.get(id.value);
+    tutorialApiService.get(id.value) .then((response) => {
+      const tutorialData = response.data;
+
+      // Populate the form with the data from the API
+      form.title = tutorialData.title;
+      form.description = tutorialData.description;
+      form.category = tutorialData.category;
+      form.difficulty = tutorialData.difficulty;
+      form.duration = tutorialData.duration;
+      form.instructor = tutorialData.instructor;
+      form.publicationDate = new Date(tutorialData.publicationDate); // Convert string to Date object if needed
+      form.published = tutorialData.published;
+      form.rating = tutorialData.rating;
+      form.id = tutorialData.id;
+    })
 });
 
 

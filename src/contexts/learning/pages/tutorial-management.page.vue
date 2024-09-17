@@ -62,8 +62,10 @@ const cancelForm = () => {
   isFormVisible.value = false
 }
 
-const deleteTutorial = (id) => {
-  tutorials.value = tutorials.value.filter((t) => t.id !== id)
+const deleteTutorial = async (id) => {
+  await tutorialApiService.delete(id).then(() => {
+    loadTutorials();
+  });
 }
 
 const loadTutorials = async () => {
