@@ -1,30 +1,13 @@
 <template>
   <div class="auth-container">
-    <div class="auth-buttons">
-      <pv-button @click="toggleForm(true)" label="Login" class="auth-button" />
-      <pv-button @click="toggleForm(false)" label="Register" class="auth-button" />
-    </div>
     <div class="auth-form">
-      <div v-if="showLogin">
-        <login-form />
-      </div>
-      <div v-else>
-        <register-form />
-      </div>
+      <register-form />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import LoginForm from '@/contexts/security/components/login-form.component.vue'
 import RegisterForm from '@/contexts/security/components/register-form.component.vue'
-
-const showLogin = ref(true)
-
-function toggleForm(isLogin) {
-  showLogin.value = isLogin
-}
 </script>
 
 <style scoped>

@@ -1,7 +1,6 @@
 <template>
   <header class="header">
-    <h1>Application Title</h1>
-    <!-- Navigation or other header content -->
+    <h1>Learning center</h1>
   </header>
 </template>
 

@@ -1,11 +1,19 @@
 <script setup>
 import MainLayout from '@/layouts/main-layout.vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const isLoginPage = computed(() => route.name === 'login' || route.path === '/')
 </script>
 
 <template>
-  <main-layout>
-    <h2>Welcome to the Home Page</h2>
-    <p>This is the main content area.</p>
-  </main-layout>
+  <div v-if="!isLoginPage">
+    <main-layout />
+  </div>
+  <div v-else>
+    <router-view />
+  </div>
 </template>
 <style scoped></style>

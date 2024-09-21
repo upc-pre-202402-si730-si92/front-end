@@ -13,20 +13,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Full viewport height */
+  height: 100%;
   text-align: center;
-  background-color: #f4f4f9; /* Light gray background */
+  background-color: #f4f4f9;
 }
 
 .not-found-title {
   font-size: 3rem;
   font-weight: bold;
-  color: #ff4d4d; /* Red color */
+  color: #ff4d4d;
   margin-bottom: 1rem;
 }
 
 .not-found-subtitle {
   font-size: 1.5rem;
-  color: #666; /* Darker gray */
+  color: #666;
 }
 </style>

@@ -2,12 +2,13 @@ import AuthManagement from '@/contexts/security/pages/auth-management.page.vue'
 import TutorialManagement from '@/contexts/learning/pages/tutorial-management.page.vue'
 import NotFound from '@/contexts/shared/pages/not-found.page.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import TheHome from '@/contexts/shared/pages/the-home.page.vue'
 import TutorialForm from './contexts/learning/components/tutorial-form.component.vue'
+import LoginForm from '@/contexts/security/components/login-form.component.vue'
 
 const routes = [
-  { path: '/', component: TheHome },
-  { path: '/security', component: AuthManagement },
+  { path: '/', component: LoginForm },
+  { path: '/login', component: LoginForm, name: 'login' },
+  { path: '/security', component: AuthManagement, name: 'security' },
   { path: '/tutorial', component: TutorialManagement },
   { path: '/create-tutorial', component: TutorialForm, name: 'createTutorial' },
   { path: '/update-tutorial/:id', component: TutorialForm, name: 'updateTutorial' },
