@@ -17,17 +17,37 @@
           <option value="Admin">Admin</option>
         </select>
       </div>
-      <pv-button label="Login" />
+      <pv-button label="Login" @click="login()" />
     </form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { SecurityApiService } from '@/contexts/security/services/security-api.service.js'
 
 const username = ref('')
 const password = ref('')
 const userType = ref('User')
+
+const securityApiService = new SecurityApiService()
+
+const login = () => {
+  const body = {
+    username: username.value,
+    password: password.value
+  }
+
+  const token = securityApiService.login(body)
+  sessionStorage.setItem('jwt', token)
+}
+
+onMounted(() => {
+  if (localStorage.getItem('username') && localStorage.getItem('password')) {
+    username.value = localStorage.getItem('username')
+    password.value = localStorage.getItem('password')
+  }
+})
 </script>
 
 <style scoped>
